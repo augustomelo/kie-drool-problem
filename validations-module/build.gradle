@@ -1,0 +1,46 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.3'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.example.demo.validation'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	implementation "org.drools:drools-compiler:9.44.0.Final"
+	implementation "org.drools:drools-core:9.44.0.Final"
+	implementation "org.kie:kie-api:9.44.0.Final"
+	implementation "org.drools:drools-xml-support:9.44.0.Final"
+	implementation "org.drools:drools-mvel:9.44.0.Final"
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.compileJava {
+    options.compilerArgs = [
+        '-parameters',
+    ]
+}
+
+bootJar {
+  enabled = false
+}
+
+bootRun {
+  enabled = false
+}
+
+jar {
+  enabled = true
+}
